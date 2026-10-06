@@ -1,14 +1,12 @@
-import java.util.Properties
-
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.plugin.compose")
 }
 
-// Свой ключ подписи для релизов: keystore.properties в корне (в git не попадает). Без него — debug-ключ
-val keystoreProps = rootProject.file("keystore.properties").takeIf { it.exists() }?.let { f ->
-    Properties().apply { f.inputStream().use(::load) }
-}
+/** Вывод git-команды; null — нет git или репозитория (сборка из архива исходников). */
+fun git(vararg args: String): String? = runCatching {
+    providers.exec { commandLine("git", *args) }.standardOutput.asText.get().trim()
+}.getOrNull()?.ifEmpty { null }
 
 android {
     namespace = "com.github.vorobeyyyyyy.geelynavbar"
@@ -18,18 +16,21 @@ android {
         applicationId = "com.github.vorobeyyyyyy.geelynavbar"
         minSdk = 28
         targetSdk = 28
-        versionCode = 2
-        versionName = "1.0.0"
+        // Версия из git, одинаково локально и в CI: versionCode — число коммитов, versionName — последний тег vX.Y.Z
+        // (на коммитах после тега — «X.Y.Z-N-gхеш»). Без git — 1 и «dev»
+        versionCode = git("rev-list", "--count", "HEAD")?.toIntOrNull() ?: 1
+        versionName = git("describe", "--tags", "--match", "v[0-9]*", "--always")?.removePrefix("v") ?: "dev"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
-        if (keystoreProps != null) {
+        // Ключ релизов: в CI из секретов, локально из ~/.android/geelynavbar-release.env
+        System.getenv("RELEASE_KEYSTORE_FILE")?.let { keystore ->
             create("release") {
-                storeFile = rootProject.file(keystoreProps.getProperty("storeFile"))
-                storePassword = keystoreProps.getProperty("storePassword")
-                keyAlias = keystoreProps.getProperty("keyAlias")
-                keyPassword = keystoreProps.getProperty("keyPassword")
+                storeFile = file(keystore)
+                storePassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")
+                keyAlias = "geelynavbar"
+                keyPassword = System.getenv("RELEASE_KEYSTORE_PASSWORD")
             }
         }
     }
@@ -40,6 +41,7 @@ android {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            // Без release-ключа локальная сборка подписывается debug-ключом
             signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
         }
     }

@@ -176,16 +176,21 @@ Xposed API подключён как `compileOnly` (`de.robv.android.xposed:api:
 
 Для тестов сплита на эмуляторе скрытые API нужно открыть: перед прогоном выполните `adb shell settings put global hidden_api_policy_p_apps 1`, после — `adb shell settings delete global hidden_api_policy_p_apps`. Без этого тесты сплита пропускаются.
 
-**Подпись.** Без настроек release подписывается debug-ключом. Для своего ключа положите в корень `keystore.properties` (в git не попадает):
+**Версия** берётся из git. `versionCode` — число коммитов. `versionName` — последний тег `vX.Y.Z`; на коммитах после тега к нему добавляется `-N-gхеш`.
 
-```properties
-storeFile=release.jks
-storePassword=…
-keyAlias=…
-keyPassword=…
+### Релизы
+
+Push тега `vX.Y.Z` запускает GitHub Actions (`.github/workflows/release.yml`): тесты → APK → релиз «GeelyNavbar X.Y.Z» с изменениями с прошлого тега. Ручной запуск того же workflow собирает и подписывает APK без релиза.
+
+```sh
+git tag -a v1.0.1 -m "GeelyNavbar 1.0.1" && git push origin v1.0.1
 ```
 
-APK с другой подписью не установится поверх уже установленного. Перед сменой ключа удалите приложение — настройки панели при этом тоже удалятся.
+Релизы подписываются release-ключом из секретов репозитория (`RELEASE_KEYSTORE_BASE64`, `RELEASE_KEYSTORE_PASSWORD`, alias `geelynavbar`). Локальный `assembleRelease` подписывает debug-ключом: такой APK не встанет поверх версии из Releases. Чтобы подписать локально release-ключом, задайте `RELEASE_KEYSTORE_FILE` и `RELEASE_KEYSTORE_PASSWORD`, например:
+```sh
+set -a; . ~/.android/geelynavbar-release.env; set +a
+./gradlew assembleRelease
+```
 
 ## Структура
 
