@@ -1,0 +1,41 @@
+# Gradle / Kotlin
+.gradle/
+.kotlin/
+build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Путь к SDK и другие машинные настройки
+local.properties
+
+# IDE и ОС
+.idea/
+*.iml
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Ключи подписи и пароли к ним (см. «Сборка» в README)
+*.jks
+*.keystore
+keystore.properties
+signing.properties
+
+# Собранные APK — выкладываются в GitHub Releases, а не в репозиторий
+*.apk
+*.aab
+*.apks
+*.idsig
+output-metadata.json
+
+# Логи, дампы, временное
+*.log
+*.hprof
+*.tmp
+
+# Только для своей машины: скрипт для ГУ (IP, пути), снимки экрана с ГУ (могут попасть карта и место),
+# рабочие заметки
+hu.sh
+recon/
+NOTES.md

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Сплит. Геометрия как у штатных PNG панели: 120×126, глиф 48 по центру; цвет день/ночь задаётся тинтом в коде -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp" android:height="126dp"
+    android:viewportWidth="120" android:viewportHeight="126">
+    <group android:translateX="36" android:translateY="39" android:scaleX="2" android:scaleY="2">
+        <path android:fillColor="#FFFFFFFF" android:pathData="M3,4h8v16H3z M13,4h8v16h-8z" />
+    </group>
+</vector>

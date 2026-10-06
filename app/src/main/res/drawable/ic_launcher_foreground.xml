@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Экран ГУ с выделенной левой колонкой кнопок и стрелкой «переставить». Белый глиф с мягкой тенью, как у штатных
+    иконок; занимает ~60 % видимой плитки 72×72 (в центре холста адаптивной иконки 108×108).
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp" android:height="108dp"
+    android:viewportWidth="108" android:viewportHeight="108">
+    <group android:pivotX="54" android:pivotY="54" android:scaleX="0.88" android:scaleY="0.88">
+        <!-- Тень -->
+        <group android:translateY="1.4">
+            <path android:strokeColor="#FF003A4A" android:strokeAlpha="0.25" android:strokeWidth="4.5"
+                android:strokeLineJoin="round"
+                android:pathData="M36,36 H72 A7,7 0 0 1 79,43 V65 A7,7 0 0 1 72,72 H36 A7,7 0 0 1 29,65 V43 A7,7 0 0 1 36,36 Z" />
+            <path android:strokeColor="#FF003A4A" android:strokeAlpha="0.25" android:strokeWidth="3.8"
+                android:strokeLineCap="round" android:strokeLineJoin="round"
+                android:pathData="M62.5,45 V63 M57,50.5 L62.5,45 L68,50.5 M57,57.5 L62.5,63 L68,57.5" />
+            <path android:fillColor="#FF003A4A" android:fillAlpha="0.25" android:fillType="evenOdd"
+                android:pathData="M36,36 H46 V72 H36 A7,7 0 0 1 29,65 V43 A7,7 0 0 1 36,36 Z M34.5,45 a3,3 0 1 0 6,0 a3,3 0 1 0 -6,0 Z M34.5,54 a3,3 0 1 0 6,0 a3,3 0 1 0 -6,0 Z M34.5,63 a3,3 0 1 0 6,0 a3,3 0 1 0 -6,0 Z" />
+        </group>
+        <!-- Экран -->
+        <path android:strokeColor="#FFFFFFFF" android:strokeWidth="4.5" android:strokeLineJoin="round"
+            android:pathData="M36,36 H72 A7,7 0 0 1 79,43 V65 A7,7 0 0 1 72,72 H36 A7,7 0 0 1 29,65 V43 A7,7 0 0 1 36,36 Z" />
+        <!-- Переставить ↕ -->
+        <path android:strokeColor="#FFFFFFFF" android:strokeWidth="3.8"
+            android:strokeLineCap="round" android:strokeLineJoin="round"
+            android:pathData="M62.5,45 V63 M57,50.5 L62.5,45 L68,50.5 M57,57.5 L62.5,63 L68,57.5" />
+        <!-- Боковая панель с тремя кнопками -->
+        <path android:fillColor="#FFFFFFFF" android:fillType="evenOdd"
+            android:pathData="M36,36 H46 V72 H36 A7,7 0 0 1 29,65 V43 A7,7 0 0 1 36,36 Z M34.5,45 a3,3 0 1 0 6,0 a3,3 0 1 0 -6,0 Z M34.5,54 a3,3 0 1 0 6,0 a3,3 0 1 0 -6,0 Z M34.5,63 a3,3 0 1 0 6,0 a3,3 0 1 0 -6,0 Z" />
+    </group>
+</vector>

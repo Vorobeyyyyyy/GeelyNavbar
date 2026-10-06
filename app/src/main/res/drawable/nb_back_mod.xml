@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «Назад» из мода панели SX11 (ic_back, viewport 80). Геометрия как у штатных PNG: 120×126; цвет — тинтом в коде -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp" android:height="126dp"
+    android:viewportWidth="120" android:viewportHeight="126">
+    <!-- Размер и центр по замеру мода на ГУ: глиф 31×43, центр x 59 при ячейке 120 (холст ужимается до 0,952) -->
+    <group android:translateX="12.68" android:translateY="19.42" android:scaleX="1.076" android:scaleY="1.076">
+        <path android:fillColor="#FFFFFFFF" android:fillType="evenOdd"
+            android:pathData="M 58 23 L 58 61 L 50 61 L 35 46 Z M 57 20 L 33 44 L 28 39 L 47 20 L 57 20 Z" />
+    </group>
+</vector>

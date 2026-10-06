@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- «Карта» из мода панели SX11 (ic_map, viewport 90). Кружок внутри — вырез (в моде он закрашен цветом фона).
+     Геометрия как у штатных PNG: 120×126; цвет — тинтом в коде -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp" android:height="126dp"
+    android:viewportWidth="120" android:viewportHeight="126">
+    <!-- Размер по замеру мода на ГУ: метка 41×59 при ячейке 120 (холст ужимается до 0,952) -->
+    <group android:translateX="9.1" android:translateY="12.1" android:scaleX="1.12" android:scaleY="1.12">
+        <path android:fillColor="#FFFFFFFF" android:fillType="evenOdd"
+            android:pathData="M 59.01 23.687 C 55.388 20.065 50.572 18.07 45.45 18.07 C 40.327 18.07 35.512 20.065 31.89 23.687 C 25.187 30.389 24.354 42.999 30.086 50.639 L 45.45 72.827 L 60.791 50.67 C 66.546 42.999 65.713 30.389 59.01 23.687 Z M 45.627 30.07 C 41.768 30.07 38.627 33.211 38.627 37.07 C 38.627 40.929 41.768 44.07 45.627 44.07 C 49.486 44.07 52.627 40.929 52.627 37.07 C 52.627 33.211 49.486 30.07 45.627 30.07 Z" />
+    </group>
+</vector>

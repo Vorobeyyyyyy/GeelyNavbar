@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Боковая панель</string>
+    <string name="xposed_description">Кнопки боковой панели Geely/ecarx: свой набор и действия внутри штатного плагина SystemUI</string>
+</resources>
